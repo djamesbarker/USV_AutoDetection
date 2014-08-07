@@ -1,0 +1,24 @@
+<productinfo>
+
+<matlabrelease>14</matlabrelease>
+<name>XBAT</name>
+<type>toolbox</type>
+<icon>$toolbox/matlab/icons/matlabicon.gif</icon>
+
+<list>
+
+<listitem>
+<label>XBAT.ORG</label>
+<callback>web http://xbat.org;</callback>
+<icon>$toolbox/matlab/icons/webicon.gif</icon>
+</listitem>
+
+<listitem>
+<label>Start XBAT</label>
+<callback>xbat;</callback>
+<icon>$toolbox/matlab/icons/figureicon.gif</icon>
+</listitem>
+
+</list>
+
+</productinfo>

@@ -1,0 +1,32 @@
+table {
+	border: 1px solid silver; 
+	border-collapse: collapse; 
+	margin: 0.5em 0.5em 0.75em;
+}
+
+th, tr, td {
+	border-bottom: 1px solid silver; 
+	padding: 0.5em 0.75em;
+}
+
+th {
+	background: rgb(230, 230, 240); 
+	text-align: right;
+}
+
+td {
+	background: rgb(250, 250, 230);
+}
+
+.struct {
+	font-family: "Comic Sans MS"; 
+	margin: 1em;
+}
+
+.field {
+	color: rgb(240, 60, 0);
+	font-variant: small-caps;
+}
+
+
+

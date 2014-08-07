@@ -1,0 +1,49 @@
+description data_template
+	
+	% TODO: develop a way to indicate use of compact control: 'email' and 'URL'
+
+	% TODO: extend size desecription of control to handle [width,lines]
+
+	% TODO: provide 'edit' as a shortcut to text 1, that will take compact option
+
+	%--
+	% parser configuration
+	%--
+
+	author "$AUTHOR"
+
+	version "$VERSION"
+
+	namespace 1
+
+	%--
+	% controls description
+	%--
+
+	group Info
+
+		subgroup Description
+
+			short_description = text 1;
+
+			description = text 3; 
+
+			% tags = text 1;
+
+		subgroup Author
+
+			name = text 1;
+
+			organization = text 1;
+
+			email = text 1;
+
+			URL = text 1;
+
+	group Requires
+
+		extensions = text 4;
+
+		toolboxes = text 4;
+
+end

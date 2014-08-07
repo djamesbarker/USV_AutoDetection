@@ -1,0 +1,106 @@
+
+/* NOTE: part of a first attempt to produce a document interface for exported logs */
+
+/*
+%--------------------------------
+% Author: Harold Figueroa
+%--------------------------------
+% $Date: 2005-02-24 21:18:55 -0500 (Thu, 24 Feb 2005) $
+% $Revision: 609 $
+%--------------------------------
+*/
+
+BODY {
+	font-family: "Comic Sans MS", sans-serif;
+	font-size: 12pt;
+}
+
+/* NOTE: in this div we can put display controls */
+
+DIV.clips_controls {
+	font-size: 80%;
+	display: box;
+	position: fixed;
+	margin-top: 16px;
+	margin-left: 16px;
+	height: 480px;
+	width: 120px;
+	float: left;
+}
+
+DIV.clips_controls TR TD {
+	padding-top: 20px;
+	font-size: 80%;
+}
+
+/* NOTE: this pane contains the clip table and provides columnar layout */
+
+DIV.clips_pane {
+	margin: 16px;
+	margin-left: 136px;
+	border-left: 1px solid silver;
+}
+
+/* NOTE: this provides a tabular layout for the event clips */
+
+TABLE.clips_table {
+	margin: 16px;
+	margin-left: 0px;
+}
+
+/* NOTE: this contains the various elements related to event data display: clips, text, etc. */
+
+DIV.event {
+	display: box;
+	margin: 16px;
+	margin-top: 0px;
+	border-left: 1px solid silver;
+	padding: 20px 16px;
+	padding-top: 4px;
+	padding-bottom: 8px;
+}
+
+/* NOTE: display a title string and annotation code similar to the XBAT context menus */
+
+SPAN.title {
+	display: inline;
+	font-size: 80%;
+	border: 1px solid black;
+	padding: 6px 10px;
+	margin-bottom: 8px;
+	background-color: rgb(255,255,180);
+}
+
+SPAN.code_container {
+	display: inline;
+}
+
+SPAN.code {
+	display: inline;
+	font-size: 80%;
+	border: 1px solid black;
+	padding: 6px 10px;
+	margin-bottom: 8px;
+	background-color: rgb(180,255,255);
+}
+
+/* NOTE: display a scaled version of the event image clips */
+
+IMG.clip {
+	margin-top: 16px;
+	padding: 8px;
+	border: 1px solid gray;
+}
+
+/* NOTE: display text information similar to the XBAT event palette */
+
+DIV.info_container {
+	display: none;
+}
+
+DIV.info {
+	font-size: 70%;
+	line-height: 1.8em;
+	border: none;
+	padding: 8px 0px;
+}

@@ -1,0 +1,24 @@
+@echo off
+rem 
+set MATLAB=$MATLAB$
+set PERLPATH=$PERLPATH$
+set MRMEXPATH=$MRMEXPATH$
+set PATH=$MINGWPATH$;%PATH%
+rem def files to be converted to libs
+set DEFS2LINK=libmx.def;libmex.def;libmat.def;
+rem
+rem compiler options; add compiler flags to compflags as desired
+set NAME_OBJECT=-o
+set COMPILER=gcc
+set COMPFLAGS=-c -DMATLAB_MEX_FILE 
+set OPTIMFLAGS=-O3 -malign-double -fno-exceptions -march=pentium
+set DEBUGFLAGS=-g0
+rem
+rem Linker parameters
+set LINKER=$LINKER$
+set LINKFLAGS=$LINKFLAGS$
+set LINKOPTIMFLAGS=-s
+set LINKDEBUGFLAGS=-g  -Wl,--image-base,0x28000000
+set LINK_FILE=
+set LINK_LIB=$LINK_LIB$
+set NAME_OUTPUT=-o %MEX_NAME%.$MEXEXT$
