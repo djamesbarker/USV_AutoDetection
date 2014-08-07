@@ -1,0 +1,87 @@
+BODY {
+    background-color: rgb(250,255,255);
+    font-family: lucida sans unicode, verdana, arial, helvetica, sans-serif;
+    font-size: 50%;
+	margin: 24px 24px;
+    line-height: 150%;
+}
+
+H1 {
+    font-family: lucida sans unicode, verdana, arial, helvetica, sans-serif;
+    font-size: 350%;
+    font-style: bold;
+    padding: 36px 0px;
+    text-decoration: none;
+}
+
+A {
+    color: black;
+    font-size: 200%;
+    margin-right: 1em;
+    padding: 2px;
+}
+
+A:hover {
+    border: 1px dotted red;
+}
+
+DIV.command {
+    padding: 2px;
+}
+
+DIV.description {
+    color: rgb(32,32,96);
+    font-size: 75%;
+    margin: 0.5em;
+}
+
+SPAN.key {
+    background-color: rgb(240,240,230);
+    border: 1px solid rgb(128,128,128);
+    border-bottom: 2px solid rgb(128,128,128);
+    border-right: 2px solid rgb(128,128,128);
+    font-family: courier new, monospace;
+    font-size: 75%;
+    padding: 8px 16px;
+}
+
+SPAN.menu {
+    background-color: rgb(240,240,240);
+    border: 1px solid rgb(128,128,128);
+    font-size: 75%;
+	padding: 8px 16px;
+}
+
+TABLE.keys {
+    background-color: white;
+    border: 1px solid rgb(128,128,128);
+    border-collapse: collapse;
+    width: 100%;
+}
+
+TABLE.keys TR.header {
+    background-color: rgb(255,255,200);
+    border: 1px solid rgb(128,128,128);
+    font-size: 125%;
+}
+
+TABLE.keys TH {
+    border: 1px solid rgb(128,128,128);
+    text-align: left;
+    padding: 12px;
+}
+
+TABLE.keys TR.category {
+    background-color: rgb(180,220,180);
+    border: 1px solid rgb(128,128,128);
+    font-size: 100%;
+}
+
+TABLE.keys TR {
+    border: 1px solid rgb(128,128,128);
+}
+
+TABLE.keys TD {
+    border: 1px solid rgb(128,128,128);
+    padding: 12px;
+}
