@@ -15,6 +15,9 @@ work:
 Barker DJ, Herrera C, West MO (In Press). Automated Detection of 50-kHz Ultrasonic 
 Vocalizations Using Template Matching in XBAT. Journal of Neuroscience Methods.
 
+We are currently in the process of developing other documentation in order to help
+new users become familiar with the software.  Please check back for updates.
+
 
 
 XBAT PREVIEW (REVISION 4)
