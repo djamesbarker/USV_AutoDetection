@@ -1,0 +1,16 @@
+function tokens = file_name_tokens(in)
+
+tokens = { ...
+    '%LOG_NAME%', ...
+    '%SOUND_NAME%', ...
+    '%EVENT_TIME%', ...
+    '%EVENT_ID%' ...
+};
+
+if ~nargin
+    return;
+end
+
+in = ['%', upper(strrep(in, ' ', '_')), '%'];
+
+tokens = tokens{strcmp(tokens, in)};

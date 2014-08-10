@@ -1,0 +1,16 @@
+function ext = raven2xbat_v2
+
+ext = extension_create;
+
+ext.short_description = '';
+
+% ext.category = {};
+
+ext.version = '';
+
+ext.author = 'Default';
+
+ext.email = '';
+
+ext.url = '';
+

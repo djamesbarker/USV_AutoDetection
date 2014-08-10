@@ -1,0 +1,13 @@
+%--------------------------------
+% Author: Harold Figueroa
+%--------------------------------
+% $Revision: 1380 $
+% $Date: 2005-07-27 18:37:56 -0400 (Wed, 27 Jul 2005) $
+%--------------------------------
+
+annotation simple "Simple"
+
+	code "Code" = text; 
+	notes "Notes" = text 10;
+
+end

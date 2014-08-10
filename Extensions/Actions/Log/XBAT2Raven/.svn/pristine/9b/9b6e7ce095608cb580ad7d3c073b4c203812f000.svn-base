@@ -1,0 +1,68 @@
+function sound = PRBA_set_time_stamps(sound)
+
+% ASE_Utils_set_time_stamps - compute
+%
+% Add time stamps to a sound; runs on a batch of Sounds
+%  in contrast to an earlier Attribute action that needed to
+%  be run by hand on each sound
+% After creating time stamps, runs a cleanup operation
+%  based on Mike Pitzrick's Time Stamps Repair action
+%  to eliminate unneeded time stamps (more details below)
+% Also sets the Hide Silence option to ON (1) for each sound
+%
+% Chris Pelkie 2011-01-31
+%  building on prototype by Ann Warde 2011-01
+%  stealing lots of ideas from Mike Pitzrick's
+%   code for Set Date-Time Attribute
+%
+%  Mike Pitzrick 20110211
+%    adapt Chris Pelkie's "Set Time Stamps Attribute sound action
+%  Mike Pitzrick 20120917
+%    take advantage of improved "get_schedule_from_files" (not fix needed)
+
+
+sound.time_stamps.table = ...
+    get_schedule_from_files(sound, 'yyyymmdd_HHMMSS');
+
+sound.time_stamp.enable = 1;
+sound.time_stamp.collapse = 1;
+
+flag = 0;
+
+for i = 1:length(sound.attributes)
+  if strcmpi(sound.attributes(i).name, 'time_stamps')
+    sound.attributes(i).value.table = table;
+    flag = 1;
+  end
+end
+
+if ~flag
+  time_stamp.name = 'time_stamps';
+  time_stamp.value.table = table; 
+  sound.attributes = [sound.attributes, time_stamp];
+end
+
+%% Update time-stamps.csv
+
+% % convert time stamp table to CSV strings
+% trimmed_len = length(table);
+% % preallocate cell array
+% lines = cell(trimmed_len+2, 1);
+% % write literal header lines
+% lines{1} = 'sound time, stamp time';
+% lines{2} = 'stamps';
+% % write strings for CSV comma-delimited format
+% for i = 1:trimmed_len
+%     lines{i + 2} = ...
+%         [num2str(table(i, 1)), ', ' num2str(table(i, 2))];
+% end
+% 
+% % if no '__XBAT\Attributes\' directory, then create
+% sPath = sound.path;
+% if ~exist([sPath '__XBAT\Attributes'], 'dir')
+%     mkdir([sPath '__XBAT\Attributes']);
+% end
+% 
+% % write time_stamps.csv
+% store = [sound.path '__XBAT\Attributes\time_stamps.csv'];
+% file_writelines(store, lines);
