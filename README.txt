@@ -1,27 +1,3 @@
-Source code for the Detection of Ultrasonic Vocalizations (USVs) in XBAT:
-----------------------------------------------------------------------------
-XBAT is the intellectual product of Cornell University, as described below.
-Code related to the detection of ultrasonic vocalizations was developed by
-Dr. David J. Barker and Christopher Hererra at Rutgers University under the 
-direction of Dr. Mark O. West. 
-
-In this version, these files have been integrated into the XBAT open-source
-software in the Extensions\Detectors and Extensions\Actions directories.
-As with XBAT, these files are open source and intended for free public use.
-
-Details regarding the development of the detector can be found within our published
-work:
-
-Barker DJ, Herrera C, West MO (In Press). Automated Detection of 50-kHz Ultrasonic 
-Vocalizations Using Template Matching in XBAT. Journal of Neuroscience Methods.
-
-We are currently in the process of developing other documentation in order to help
-new users become familiar with the software.  Please check back for updates.
-
-Also visit www.rci.rutgers.edu/~markwest/ for updates.
-
-
-
 XBAT PREVIEW (REVISION 4)
 -------------------------
 01-Nov-2006

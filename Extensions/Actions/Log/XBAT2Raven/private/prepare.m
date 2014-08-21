@@ -516,10 +516,10 @@ for i = 1:NumLogs
                 if isempty(tagsCell)
                     event_tags = ' ';
                 else
-                    event_tags = tagsCell{1};
-                    for ti = 2:lengthCell
-                        event_tags = [event_tags ' | ' tagsCell{ti}];
-                    end
+                    event_tags = {tagsCell};
+%                     for ti = 2:lengthCell
+%                         event_tags = [event_tags ' | ' {tagsCell}];
+%                     end
                 end
                 
                 % See if notes exist for event, if not put in blank
