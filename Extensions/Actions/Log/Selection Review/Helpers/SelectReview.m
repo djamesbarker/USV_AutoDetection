@@ -78,8 +78,8 @@ if strcmp(handles.GetKeys,'Yes')
         handles.keybind=text;
     end
 elseif strcmp(handles.GetKeys,'No')
-    disp('Good');
-    handles.MakeKeys=questdlg('Would you like to make key bindings?');
+    %disp('Good');
+    %handles.MakeKeys=questdlg('Would you like to make key bindings?');
 end
 
 % Update handles structure
@@ -146,6 +146,7 @@ switch eventdata.Key
     case 'rightarrow'
         Forward_Callback(hObject, eventdata, handles)
     case 'escape'
+        % BUILD IN 2 WARNINGS HERE FOR NON-REJECTED.
         figure1_CloseRequestFcn(hObject, eventdata, handles)
     otherwise
         for j=1:size(handles.keybind,1)
@@ -333,7 +334,8 @@ function Play_Callback(hObject, eventdata, handles)
 % hObject    handle to Play (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-wavplay(handles.log.playback{handles.index},handles.log.playsample(2)*handles.log.playspeed);
+handles.audio=audioplayer(handles.log.playback{handles.index},handles.log.playsample(2)*handles.log.playspeed);
+play(handles.audio)
 guidata(hObject, handles);
 
 
