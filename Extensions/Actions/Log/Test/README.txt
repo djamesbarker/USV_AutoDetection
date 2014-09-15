@@ -1,2 +1,0 @@
-This directory is specially used and managed by XBAT. 
-Please do not delete it or modify it's contents.
