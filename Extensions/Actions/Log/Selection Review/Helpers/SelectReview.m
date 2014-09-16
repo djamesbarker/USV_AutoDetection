@@ -1,11 +1,6 @@
 %% TO DO
-% Add Selection2Template Feature
 
 %% BUGS
-% If you use the 'enter' key to press 'No' to the import keybindings question then
-% it'll still give you the dialog and if you click cancel, it will get
-% stuck. A simple condition fixes it that but than you never get to the
-% Make Your Own dialog. Need If If Elseif Else
 
 %%
 function varargout = SelectReview(varargin)
@@ -35,7 +30,7 @@ function SelectReview_OpeningFcn(hObject, eventdata, handles, varargin)
 handles.output=hObject;
 
 % Code to input custom key bindings. Needs work.
-handles.GetKeys=questdlg('Would you like to import key bindings?','Bindings','Yes');
+handles.GetKeys=questdlg('Would you like to import key bindings?','Bindings','No');
 
 log=varargin{1};
 
@@ -94,7 +89,18 @@ function varargout = SelectReview_OutputFcn(hObject, eventdata, handles)
 handles2=handles;
 handles=handles2;
 
-handles.log.clips=handles.clips;
+EmTCount=0;
+for i=1:length(handles.calltype)
+    if isempty(handles.calltype{i})
+        EmTCount=EmTCount+1;
+    end
+end
+
+if EmTCount>0
+    f=warndlg(['Warning:' num2str(EmTCount)  '  Untagged (un-reviewed) events found! These will be preserved for future review']);
+    waitfor(f);
+end
+
 logical=handles.logical==1;
 for i=1:length(handles.log.event)
     if handles.logical(i)==1
@@ -146,8 +152,7 @@ switch eventdata.Key
     case 'rightarrow'
         Forward_Callback(hObject, eventdata, handles)
     case 'escape'
-        % BUILD IN 2 WARNINGS HERE FOR NON-REJECTED.
-        figure1_CloseRequestFcn(hObject, eventdata, handles)
+       figure1_CloseRequestFcn(hObject, eventdata, handles)
     otherwise
         for j=1:size(handles.keybind,1)
             if strcmp(eventdata.Key,handles.keybind{j,2})
@@ -155,6 +160,7 @@ switch eventdata.Key
                 handles.calltype{handles.index}=...
                     handles.keybind{j,1};
                 Forward_Callback(hObject, eventdata, handles)
+            else
             end
         end
 end
@@ -164,10 +170,11 @@ function figure1_CloseRequestFcn(hObject, eventdata, handles)
 % hObject    handle to figure1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
 if isequal(get(hObject,'waitstatus'),'waiting')
     uiresume(hObject);
-else
-    delete(hObject);
+else    
+    delete (hObject);
 end
 
 
@@ -508,49 +515,6 @@ end
 
 Plot_Callback(hObject, eventdata, handles)
 guidata(hObject, handles);
-
-
-% --- Executes on button press in Selection Menu
-function Selection2Template_Callback(hObject, eventdata, handles)
-% hObject    handle to Selection2Template (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-disp('HI! WE''RE NOT FUNCTIONAL YET, BUT I THINK WE''RE CLOSE! THANKS FOR THE PATIENCE!')
-
-% answer=questdlg('Would you like to make selection or use the whole clip?', ...
-%     'Make Selection?', ...
-%     'Make Selection','Whole Clip');
-%
-% switch answer
-%     case 'Make Selection'
-%         rect=getrect; rect(3)=rect(1)+rect(3); rect(4)=rect(2)+rect(4);
-%
-%         tmp=handles.clips{handles.index}(...
-%             find(handles.log.freq{handles.index} < tmp_area(2),1,'last'):...
-%             find(handles.log.freq{handles.index} > tmp_area(4),1,'first'),...
-%             find(handles.log.time{handles.index} < tmp_area(1),1,'last'):...
-%             find(handles.log.time{handles.index} > tmp_area(3),1,'first'));
-%     case 'Whole Clip'
-%         tmp=handles.clips{handles.index};
-% end
-%
-% msg=msgbox('Please select the preset you would like to add the template to:');
-% uiwait(msg);
-% [filename path]=uigetfile;
-% file=load(fullfile(path,filename));
-% varname=fieldnames(file);
-% file=add2tmplib(file,file.ext,file.context);
-
-% --- Executes on button press in Clear_Selection.
-function Clear_Selection_Callback(hObject, eventdata, handles)
-% hObject    handle to Clear_Selection (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-handles.area{handles.index}=[];
-
-Plot_Callback(hObject, eventdata, handles)
-guidata(hObject, handles);
-
 
 % --------------------------------------------------------------------
 function NextUntagged_Callback(hObject, eventdata, handles)

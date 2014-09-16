@@ -15,7 +15,7 @@ function [result, context] = compute(log, parameter, context)
 Fs=log.sound.samplerate;
 %spect_res=Fs/FFT_Len;
 
-%% TO DO: Add Dialog to allow the user to set the buffer around calls and playback speed!!!!!!!!!!!!!!!!!
+%% Dialog to allow the user to set the buffer around calls and playback speed!!!!!!!!!!!!!!!!!
 defAns = {'0.05' '18000' '80000'};
 prompt={'Amount of time(s) to pad around each selection','Low Freq for BandPass',...
     'High Freq for BandPass'};
