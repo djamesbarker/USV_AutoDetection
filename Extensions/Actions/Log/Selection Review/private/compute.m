@@ -20,7 +20,8 @@ defAns = {'0.05' '18000' '80000'};
 prompt={'Amount of time(s) to pad around each selection','Low Freq for BandPass',...
     'High Freq for BandPass'};
 answer = inputdlg(prompt,'Settings:',1,defAns);
-pad = abs(str2double(answer{1}))*Fs;
+padval=abs(str2double(answer{1}));
+pad = round(abs(str2double(answer{1}))*Fs);
 
 % Creates log.sound.startTime,log.fileDuration,log.event.file,log.event.SR_time
 %   startTime = start of sound with respect to filestream
@@ -31,6 +32,7 @@ log = get_event_files(log);
 
 %% Creates the spectrogram for each identified clip found in the log file
 log=prepSelRev(log,Fs,answer,pad)
+log.pad=padval
 
 %NEED TO CHANGE SELECT REVIEW WITH THIS INPUT.
 log=SelectReview(log);
@@ -38,6 +40,7 @@ log=SelectReview(log);
 [savename pathname]=uiputfile('*.mat','Save file as...',[log.path name '_REVIEWED.mat']);
 log.file=savename;
 log_save(log);
+
 
 result = [];
 end
