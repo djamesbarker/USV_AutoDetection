@@ -2,6 +2,7 @@ function [result, context] = compute(log, parameter, context)
 
 % USV_CLEAN - compute
 
+
 for i=1:length(log.event);
    data(i,1:2)=log.event(i).time(1:2);
    data(i,3:4)=log.event(i).freq(1:2);
@@ -9,7 +10,7 @@ end
 
 newlog=[];
 data(:,5)=0;
-for i=1:length(data)
+for i=1:length(data(:,1))
 if data(i,5)==1
 else
     currtime=data(i,1);
@@ -34,7 +35,8 @@ result=log;
 [savename pathname]=uiputfile([result.path '*.mat']);
 result.file=savename;
 
-for i=1:length(newlog)
+if length(newlog(:,1))>1
+for i=1:length(newlog(:,1))
 event(i).id=i;
 event(i).tags=log.event(newlog(i,5)).tags;
 event(i).rating=log.event(newlog(i,5)).rating;
@@ -58,6 +60,10 @@ event(i).detection=log.event(newlog(i,5)).detection;
 event(i).annotation=log.event(newlog(i,5)).annotation;
 event(i).measurement=log.event(newlog(i,5)).measurement;
 end
+else 
+error('No events in log,No action taken')
+return
+end    
 
 
 %% Second run
@@ -75,7 +81,7 @@ end
 
 newlog=[];
 data(:,5)=0;
-for i=length(data):-1:1;
+for i=length(data(:,1)):-1:1;
 if data(i,5)==1
 else
     currtime=data(i,1);
@@ -84,8 +90,12 @@ else
         data(:,1)>=currtime & data(:,1)<=currtime2|...
         data(:,2)>=currtime & data(:,2)<=currtime2|...
         data(:,1)<=currtime & data(:,2)>=currtime|...
-        data(:,1)<=currtime2 & data(:,2)>=currtime2;
-              
+        data(:,1)<=currtime2 & data(:,2)>=currtime2|...
+        ...Edit added here to help reduce double detections
+        ...Events within 10ms of one another are now combined
+        data(:,1)>=currtime2 & data(:,2)<=currtime2+0.03|...
+        data(:,2)>=currtime-0.03 & data(:,2)<=currtime;
+    
     tmp=data(data(:,5)==1,:);
     
     newlog(end+1,1)=min(tmp(:,1));
@@ -98,7 +108,7 @@ end
 
 result=log;
 clear event
-for i=1:length(newlog)
+for i=1:length(newlog (:,1))
 event(i).id=i;
 event(i).tags=log.event(newlog(i,5)).tags;
 event(i).rating=log.event(newlog(i,5)).rating;

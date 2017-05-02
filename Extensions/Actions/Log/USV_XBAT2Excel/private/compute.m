@@ -3,7 +3,7 @@ function [result, context] = compute(log, parameter, context)
 % USV_XBAT2EXCEL - compute
 
 header={'EventID' 'StartTime' 'EndTime' 'LowerBound' ...
-    'UpperBound' 'PeakTime' 'PeakHz' 'Correlation' 'SampleRate'};
+    'UpperBound' 'PeakTime' 'PeakHz' 'Correlation' 'SampleRate' 'Tag'};
 
 
 for i=1:length(log.event)
@@ -19,6 +19,7 @@ for i=1:length(log.event)
             A(i,8)=log.event(1,i).score;  % Correlation Score
         end
         A(i,9)=log.sound.samplerate;
+        Tag{i,1}=log.event(1,i).tags(1:end);
     else
     h = warndlg('Log is not ready for export. Please run Selection Review First.');
     error('Log is not ready for export. Please run Selection Review First.');
@@ -31,5 +32,6 @@ end
 
 xlswrite(fullfile(pathname,filename),A,'Sheet1','A2');     %Write data
 xlswrite(fullfile(pathname,filename),header,'Sheet1','A1'); 
+xlswrite(fullfile(pathname,filename),Tag,'Sheet1','J2'); 
 
 result = struct;
